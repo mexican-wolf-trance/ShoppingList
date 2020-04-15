@@ -9,104 +9,55 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 
 import edu.charles_wyatt.shoppinglist.dummy.DummyContent
 import edu.charles_wyatt.shoppinglist.dummy.DummyContent.DummyItem
+import kotlinx.android.synthetic.main.fragment_create_list_list.*
 
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [CreateListFragment.OnListFragmentInteractionListener] interface.
- */
 class CreateListFragment : Fragment()
 {
+    //private var columnCount = 1
 
-    // TODO: Customize parameters
-    private var columnCount = 1
-
-    private var listener: OnListFragmentInteractionListener? = null
-
-    override fun onCreate(savedInstanceState: Bundle?)
+    private var listener: ShoppingListViewListener? = null
+    interface ShoppingListViewListener
     {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+        val item: List<String>
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View?
-    {
-        val view = inflater.inflate(R.layout.fragment_create_list_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
+    {return inflater.inflate(R.layout.fragment_create_list_list, container, false)}
 
-        // Set the adapter
-        if (view is RecyclerView)
-        {
-            with(view)
-            {
-                layoutManager = when
-                {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyItemRecyclerViewAdapter(DummyContent.ITEMS, listener)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        shopping_list_view.layoutManager = LinearLayoutManager(activity)
+        shopping_list_view.adapter = ShoppingListAdapter()
+    }
+
+    inner class ShoppingListAdapter: RecyclerView.Adapter<ShoppingListHolder>() {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListHolder {
+            val inflater = LayoutInflater.from(activity)
+            val itemView = inflater.inflate(R.layout.fragment_create_list_list, parent, false)
+            return ShoppingListHolder(itemView)
+        }
+
+        override fun getItemCount(): Int = listener?.item?.size ?: 0
+
+        override fun onBindViewHolder(holder: ShoppingListHolder, position: Int) {
+            listener?.item?.get(position)?.let {
+                holder.bindTitle(it)
             }
         }
-        return view
     }
-
-    override fun onAttach(context: Context)
+    class ShoppingListHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView)
     {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener)
+        private val titleTextView: TextView = itemView.findViewById(R.id.item_name)
+        private val priceTextView: TextView = itemView.findViewById(R.id.item_price)
+
+        fun bindTitle(title: String)
         {
-            listener = context
+            titleTextView.text = title
+            priceTextView.text = null
         }
-        else
-        {
-            throw RuntimeException("$context must implement OnListFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach()
-    {
-        super.onDetach()
-        listener = null
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson
-     * [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnListFragmentInteractionListener
-    {
-        // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
-    }
-
-    companion object
-    {
-
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            CreateListFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
     }
 }
