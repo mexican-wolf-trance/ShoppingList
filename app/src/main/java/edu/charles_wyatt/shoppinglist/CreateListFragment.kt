@@ -10,15 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
-import edu.charles_wyatt.shoppinglist.dummy.DummyContent
-import edu.charles_wyatt.shoppinglist.dummy.DummyContent.DummyItem
 import kotlinx.android.synthetic.main.fragment_create_list_list.*
+import edu.charles_wyatt.shoppinglist.Persistance.Entities.ShoppingListEntity
 
 class CreateListFragment : Fragment()
 {
-    //private var columnCount = 1
-
     private var listener: ShoppingListViewListener? = null
     interface ShoppingListViewListener
     {
@@ -28,22 +24,26 @@ class CreateListFragment : Fragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {return inflater.inflate(R.layout.fragment_create_list_list, container, false)}
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?)
+    {
         super.onViewCreated(view, savedInstanceState)
         shopping_list_view.layoutManager = LinearLayoutManager(activity)
         shopping_list_view.adapter = ShoppingListAdapter()
     }
 
-    inner class ShoppingListAdapter: RecyclerView.Adapter<ShoppingListHolder>() {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListHolder {
+    inner class ShoppingListAdapter: RecyclerView.Adapter<ShoppingListHolder>()
+    {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListHolder
+        {
             val inflater = LayoutInflater.from(activity)
-            val itemView = inflater.inflate(R.layout.fragment_create_list_list, parent, false)
+            val itemView = inflater.inflate(R.layout.fragment_create_list, parent, false)
             return ShoppingListHolder(itemView)
         }
 
         override fun getItemCount(): Int = listener?.item?.size ?: 0
 
-        override fun onBindViewHolder(holder: ShoppingListHolder, position: Int) {
+        override fun onBindViewHolder(holder: ShoppingListHolder, position: Int)
+        {
             listener?.item?.get(position)?.let {
                 holder.bindTitle(it)
             }
