@@ -1,4 +1,4 @@
-package edu.charles_wyatt.shoppinglist.Persistance.Entities
+package edu.charles_wyatt.shoppinglist.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
