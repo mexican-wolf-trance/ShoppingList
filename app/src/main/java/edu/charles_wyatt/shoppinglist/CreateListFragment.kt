@@ -37,8 +37,8 @@ class CreateListFragment : Fragment()
 
     private fun updateUI()
     {
-        activity.let {
-            shoppingListRecyclerView.adapter = ShoppingListRecyclerViewAdapter(activity!!)
+        activity?.let {
+            shoppingListRecyclerView.adapter = ShoppingListRecyclerViewAdapter(it)
         }
     }
 
