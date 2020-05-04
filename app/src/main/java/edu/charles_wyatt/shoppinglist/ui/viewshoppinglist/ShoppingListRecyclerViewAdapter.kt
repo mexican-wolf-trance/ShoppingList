@@ -1,7 +1,6 @@
 package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +25,7 @@ class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListHolder
     {
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.fragment_create_list, parent, false)
+        val view = inflater.inflate(R.layout.fragment_view_list, parent, false)
         val holder =
             ShoppingListHolder(
                 view
@@ -42,11 +41,11 @@ class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerVi
     {
         val list = ShoppingList()
         list.itemName = "Lettuce"
-        list.itemPrice = "3.50"
+//        list.itemPrice = "3.50"
  //       dataSource?.dataAtIndex(position)?.let{list ->
             holder.nameTextView.text = list.itemName
-            holder.priceTextView.text = list.itemPrice
-            holder.checkboxView.isChecked = list.isBought
+//            holder.priceTextView.text = list.itemPrice
+//            holder.checkboxView.isChecked = list.isBought
 //            holder.bindShoppingList(list)
   //      }
 

@@ -9,9 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
-import edu.charles_wyatt.shoppinglist.database.ShoppingList
 import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListActivity
-import kotlinx.android.synthetic.main.fragment_create_list_list.view.*
+import kotlinx.android.synthetic.main.fragment_view_list_recycler.view.*
 
 class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 {
@@ -23,7 +22,7 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
-        val view = inflater.inflate(R.layout.fragment_create_list_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_view_list_recycler, container, false)
         shoppingListRecyclerView = view.shopping_recycler_view
         shoppingListRecyclerView.layoutManager = LinearLayoutManager(activity)
         updateUI()

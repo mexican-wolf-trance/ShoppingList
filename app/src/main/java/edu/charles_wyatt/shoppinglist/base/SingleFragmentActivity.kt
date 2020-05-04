@@ -14,7 +14,7 @@ abstract class SingleFragmentActivity: AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fragment)
+        setContentView(R.layout.list_activity_fragment)
         var fragment = (supportFragmentManager.findFragmentById(R.id.fragment_container))
         if (fragment == null)
         {

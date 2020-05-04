@@ -25,7 +25,18 @@ class CreateListActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_list)
 
+        var fragment = supportFragmentManager.findFragmentById(R.id.activity_create_list) as? CreateListFragment
+        if (fragment ==  null)
+        {
+            fragment = CreateListFragment()
+        }
 
+        if (!fragment.isAdded)
+        {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.activity_create_list, fragment)
+                .commit()
+        }
     }
 
 }

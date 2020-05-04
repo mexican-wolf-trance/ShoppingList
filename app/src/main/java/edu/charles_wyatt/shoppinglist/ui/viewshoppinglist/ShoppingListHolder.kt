@@ -4,19 +4,15 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_create_list.view.*
+import kotlinx.android.synthetic.main.fragment_view_list.view.*
 
 class ShoppingListHolder constructor(itemView: View):
     RecyclerView.ViewHolder(itemView), View.OnClickListener
 {
-    val nameTextView: TextView = itemView.item_name
-    val priceTextView: TextView = itemView.item_price
-    val checkboxView: CheckBox = itemView.check_box
+    val nameTextView: TextView = itemView.list_name
 
     init
-    {
-        itemView.setOnClickListener(this)
-    }
+    { itemView.setOnClickListener(this) }
 
     private var onClickCallback: ((View) -> Unit)? = null
     fun setOnClickListener(callback: ((View) -> Unit)?)
