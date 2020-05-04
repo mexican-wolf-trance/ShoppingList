@@ -33,7 +33,6 @@ class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerVi
             )
 
         holder.setOnClickListener {
-            Log.e("TAG", "Itemview clicked at position ${holder.adapterPosition}")
             delegate?.selectedItemAtIndex(holder.adapterPosition)
         }
         return holder

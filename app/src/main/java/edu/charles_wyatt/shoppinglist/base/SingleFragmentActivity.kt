@@ -23,8 +23,7 @@ abstract class SingleFragmentActivity: AppCompatActivity()
 
         if (!fragment.isAdded)
         {
-            fragment =
-                ViewListFragment()
+            fragment = ViewListFragment()
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, fragment)
                 .commit()
