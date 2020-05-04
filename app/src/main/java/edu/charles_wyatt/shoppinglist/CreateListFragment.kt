@@ -31,8 +31,7 @@ class CreateListFragment : Fragment()
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
-        listModel =
-            ViewModelProvider(this).get(ShoppingViewModel::class.java)
+        listModel = ViewModelProvider(this).get(ShoppingViewModel::class.java)
         updateUI()
     }
 
