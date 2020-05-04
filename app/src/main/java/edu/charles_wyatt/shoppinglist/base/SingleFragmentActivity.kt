@@ -3,8 +3,7 @@ package edu.charles_wyatt.shoppinglist.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.ListFragment
-import edu.charles_wyatt.shoppinglist.CreateListFragment
+import edu.charles_wyatt.shoppinglist.ui.viewshoppinglist.ViewListFragment
 import edu.charles_wyatt.shoppinglist.R
 
 
@@ -24,7 +23,8 @@ abstract class SingleFragmentActivity: AppCompatActivity()
 
         if (!fragment.isAdded)
         {
-            fragment = CreateListFragment()
+            fragment =
+                ViewListFragment()
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, fragment)
                 .commit()

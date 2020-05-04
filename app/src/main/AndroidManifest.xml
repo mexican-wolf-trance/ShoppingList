@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListActivity"/>
-        <activity android:name=".MenuActivity">
+        <activity android:name=".ui.createshoppinglist.CreateListActivity" />
+        <activity android:name=".ui.viewshoppinglist.ListActivity" />
+        <activity android:name=".ui.mainmenu.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

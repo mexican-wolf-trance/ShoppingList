@@ -1,4 +1,4 @@
-package edu.charles_wyatt.shoppinglist
+package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import androidx.lifecycle.ViewModel
 

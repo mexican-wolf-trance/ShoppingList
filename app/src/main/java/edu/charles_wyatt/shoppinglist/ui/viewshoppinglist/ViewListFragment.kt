@@ -1,4 +1,4 @@
-package edu.charles_wyatt.shoppinglist
+package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,13 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import edu.charles_wyatt.shoppinglist.R
 import kotlinx.android.synthetic.main.fragment_create_list_list.view.*
-import edu.charles_wyatt.shoppinglist.ShoppingListRecyclerViewAdapter
 
-class CreateListFragment : Fragment()
+class ViewListFragment : Fragment()
 {
     companion object
-    { fun newInstance() = CreateListFragment() }
+    { fun newInstance() =
+        ViewListFragment()
+    }
 
     private lateinit var listModel: ShoppingViewModel
     private lateinit var shoppingListRecyclerView: RecyclerView
@@ -38,7 +40,10 @@ class CreateListFragment : Fragment()
     private fun updateUI()
     {
         activity?.let {
-            shoppingListRecyclerView.adapter = ShoppingListRecyclerViewAdapter(it)
+            shoppingListRecyclerView.adapter =
+                ShoppingListRecyclerViewAdapter(
+                    it
+                )
         }
     }
 

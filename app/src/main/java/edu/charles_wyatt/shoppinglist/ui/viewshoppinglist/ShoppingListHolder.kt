@@ -1,10 +1,9 @@
-package edu.charles_wyatt.shoppinglist
+package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import edu.charles_wyatt.shoppinglist.database.ShoppingList
 import kotlinx.android.synthetic.main.fragment_create_list.view.*
 
 class ShoppingListHolder constructor(itemView: View):

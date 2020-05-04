@@ -1,8 +1,10 @@
-package edu.charles_wyatt.shoppinglist
+package edu.charles_wyatt.shoppinglist.ui.mainmenu
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import edu.charles_wyatt.shoppinglist.R
+import edu.charles_wyatt.shoppinglist.ui.viewshoppinglist.ListActivity
 import kotlinx.android.synthetic.main.menu_screen.*
 
 class MenuActivity : AppCompatActivity() {

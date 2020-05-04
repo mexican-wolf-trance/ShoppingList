@@ -1,13 +1,12 @@
-package edu.charles_wyatt.shoppinglist
+package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.RoomOpenHelper
+import edu.charles_wyatt.shoppinglist.R
 import edu.charles_wyatt.shoppinglist.database.ShoppingList
-import javax.sql.DataSource
 
 class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<ShoppingListHolder>()
 {
@@ -28,7 +27,10 @@ class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerVi
     {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.fragment_create_list, parent, false)
-        val holder = ShoppingListHolder(view)
+        val holder =
+            ShoppingListHolder(
+                view
+            )
 
         holder.setOnClickListener {
             Log.e("TAG", "Itemview clicked at position ${holder.adapterPosition}")
