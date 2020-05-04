@@ -9,17 +9,18 @@ import edu.charles_wyatt.shoppinglist.database.ShoppingList
 
 class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<ShoppingListHolder>()
 {
-    var dataSource: DataSource? = null
-    interface DataSource
-    {
-        val itemCount: Int
-        fun dataAtIndex(index: Int): ShoppingList?
-    }
+private var lists: List<ShoppingList> = emptyList()
 
     var delegate: Delegate? = null
     interface Delegate
     {
         fun selectedItemAtIndex(index: Int)
+    }
+
+    fun setListCache(lists: List<ShoppingList>)
+    {
+        this.lists = lists
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShoppingListHolder
@@ -39,22 +40,13 @@ class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerVi
 
     override fun onBindViewHolder(holder: ShoppingListHolder, position: Int)
     {
-        val list = ShoppingList()
-        list.listName = "List1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 "
-//        list.itemPrice = "3.50"
- //       dataSource?.dataAtIndex(position)?.let{list ->
-            holder.nameTextView.text = list.listName
-//            holder.priceTextView.text = list.itemPrice
-//            holder.checkboxView.isChecked = list.isBought
-//            holder.bindShoppingList(list)
-  //      }
-
+        val list = lists[position]
+        holder.nameTextView.text = list.listName
     }
 
     override fun getItemCount(): Int
     {
-        return 3
-//        return dataSource?.itemCount ?: 0
+        return lists.size
     }
 
 }

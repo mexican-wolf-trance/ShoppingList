@@ -4,20 +4,24 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
 import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListActivity
 import kotlinx.android.synthetic.main.fragment_view_list_recycler.view.*
+import kotlinx.coroutines.InternalCoroutinesApi
 
 class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 {
     companion object
     { fun newInstance() = ViewListFragment() }
 
+    @InternalCoroutinesApi
     private lateinit var listModel: ShoppingViewModel
     private lateinit var shoppingListRecyclerView: RecyclerView
+    private lateinit var listAdapter: ShoppingListRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -34,11 +38,14 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         return view
     }
 
+    @InternalCoroutinesApi
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
         listModel = ViewModelProvider(this).get(ShoppingViewModel::class.java)
-        updateUI()
+        listModel.lists.observe(viewLifecycleOwner, Observer {
+            listAdapter.setListCache(it)
+        })
     }
 
     override fun selectedItemAtIndex(index: Int)
@@ -53,9 +60,9 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
     private fun updateUI()
     {
         activity?.let {
-            val adapter = ShoppingListRecyclerViewAdapter(it)
-            adapter.delegate = this
-            shoppingListRecyclerView.adapter = adapter
+            listAdapter = ShoppingListRecyclerViewAdapter(it)
+            listAdapter.delegate = this
+            shoppingListRecyclerView.adapter = listAdapter
         }
     }
 

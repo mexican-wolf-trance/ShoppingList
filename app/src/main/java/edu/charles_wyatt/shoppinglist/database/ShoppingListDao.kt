@@ -8,7 +8,7 @@ import java.util.*
 interface ShoppingListDao
 {
     @Query("SELECT * FROM shopping ORDEr BY id ASC")
-    suspend fun allLists(): LiveData<List<ShoppingList>>
+    fun allLists(): LiveData<List<ShoppingList>>
 
     @Query("SELECT * FROM shopping WHERE id = :id LIMIT 1")
     suspend fun forID(id: UUID): ShoppingList?
