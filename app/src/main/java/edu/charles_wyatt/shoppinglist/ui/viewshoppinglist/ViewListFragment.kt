@@ -1,12 +1,11 @@
 package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
 import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListActivity
@@ -19,6 +18,12 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 
     private lateinit var listModel: ShoppingViewModel
     private lateinit var shoppingListRecyclerView: RecyclerView
+
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
@@ -54,5 +59,26 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
+    {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.shopping_list_menu, menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
+        return when (item.itemId)
+        {
+            R.id.add_shopping_list_option ->
+            {
+                val intent = Intent(context, CreateListActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else ->
+            {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
 }

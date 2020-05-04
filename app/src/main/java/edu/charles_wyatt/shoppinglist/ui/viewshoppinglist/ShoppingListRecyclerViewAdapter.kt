@@ -40,10 +40,10 @@ class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerVi
     override fun onBindViewHolder(holder: ShoppingListHolder, position: Int)
     {
         val list = ShoppingList()
-        list.itemName = "Lettuce"
+        list.listName = "List1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 "
 //        list.itemPrice = "3.50"
  //       dataSource?.dataAtIndex(position)?.let{list ->
-            holder.nameTextView.text = list.itemName
+            holder.nameTextView.text = list.listName
 //            holder.priceTextView.text = list.itemPrice
 //            holder.checkboxView.isChecked = list.isBought
 //            holder.bindShoppingList(list)
