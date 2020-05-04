@@ -11,4 +11,6 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".CreateListFragment"
-    tools:listitem="@layout/fragment_create_list" />
+    tools:listitem="@layout/fragment_create_list" >
+
+</androidx.recyclerview.widget.RecyclerView>
