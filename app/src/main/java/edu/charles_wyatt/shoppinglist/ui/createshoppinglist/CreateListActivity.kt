@@ -19,7 +19,7 @@ class CreateListActivity : AppCompatActivity()
 
     companion object
     {
-        private const val EXTRA_LIST_ID = "edu.charles_wyatt.shoppinglist.list.id"
+        private const val EXTRA_LIST_ID = "edu.charles_wyatt.shoppinglist.id"
 
         fun newIntent(context: Context, listID: UUID): Intent
         {

@@ -2,26 +2,37 @@ package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
+import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.AddItemFrag
 import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListActivity
+import kotlinx.android.synthetic.main.create_list_recycler_view.view.*
 import kotlinx.android.synthetic.main.fragment_view_list_recycler.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
 class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 {
-    companion object
-    { fun newInstance() = ViewListFragment() }
+//    companion object
+//    { fun newInstance() = ViewListFragment() }
+
+    interface StateListener
+    {
+       fun goToTheFrag()
+    }
+    var listener: StateListener? = null
 
     @InternalCoroutinesApi
     private lateinit var listModel: ShoppingViewModel
     private lateinit var shoppingListRecyclerView: RecyclerView
     private lateinit var listAdapter: ShoppingListRecyclerViewAdapter
+    private lateinit var addNewListButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -34,6 +45,12 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         val view = inflater.inflate(R.layout.fragment_view_list_recycler, container, false)
         shoppingListRecyclerView = view.shopping_recycler_view
         shoppingListRecyclerView.layoutManager = LinearLayoutManager(activity)
+        addNewListButton = view.add_new_list_btn
+        addNewListButton.setOnClickListener()
+        {
+            listener?.goToTheFrag()
+        }
+
         updateUI()
         return view
     }
@@ -69,26 +86,28 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
-    {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.shopping_list_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean
-    {
-        return when (item.itemId)
-        {
-            R.id.add_shopping_list_option ->
-            {
-                val intent = Intent(context, CreateListActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            else ->
-            {
-                super.onOptionsItemSelected(item)
-            }
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
+//    {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        inflater.inflate(R.menu.shopping_list_menu, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean
+//    {
+//        return when (item.itemId)
+//        {
+//            R.id.add_shopping_list_option ->
+//            {
+//                Log.e("TAG", "Button pressed")
+//                listener?.goToTheFrag()
+////                val intent = Intent(context, AddItemFrag::class.java)
+////                startActivity(intent)
+//                true
+//            }
+//            else ->
+//            {
+//                super.onOptionsItemSelected(item)
+//            }
+//        }
+//    }
 }

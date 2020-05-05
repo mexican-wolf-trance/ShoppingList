@@ -2,6 +2,7 @@ package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 
 import android.view.View
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_view_list.view.*

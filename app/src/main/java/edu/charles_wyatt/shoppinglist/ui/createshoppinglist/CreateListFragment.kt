@@ -19,7 +19,8 @@ import kotlinx.android.synthetic.main.create_list_recycler_view.view.*
 import kotlinx.android.synthetic.main.fragment_view_list.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate {
+class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
+{
     private lateinit var itemNameText: EditText
     private lateinit var itemPriceText: EditText
 //    private lateinit var listName: EditText
@@ -67,14 +68,14 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
     {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.shopping_list_menu, menu)
+        inflater.inflate(R.menu.create_list_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean
     {
         return when (item.itemId)
         {
-            R.id.add_shopping_list_option ->
+            R.id.add_create_list_option ->
             {
                 val intent = Intent(context, CreateListActivity::class.java)
                 startActivity(intent)

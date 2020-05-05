@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <TextView
+        android:id="@+id/add_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add a New List"
+        android:textSize="30sp"
+        />
+
+    <EditText
+        android:id="@+id/list_title"
+        android:layout_below="@id/add_list_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+<!--    <EditText-->
+<!--        android:id="@+id/name_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/list_title"-->
+<!--        />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/price_title"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/name_title"-->
+<!--        />-->
+
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/list_title"
+        android:text="@string/submit"/>
+
+
+</RelativeLayout>
