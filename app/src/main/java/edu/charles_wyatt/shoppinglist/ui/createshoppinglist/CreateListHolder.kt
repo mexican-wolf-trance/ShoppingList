@@ -1,16 +1,17 @@
-package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
+package edu.charles_wyatt.shoppinglist.ui.createshoppinglist
 
 import android.view.View
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_view_list.view.*
-import kotlinx.android.synthetic.main.fragment_view_list.view.*
+import kotlinx.android.synthetic.main.create_list_fragment.view.*
 
-class ShoppingListHolder constructor(itemView: View):
+class CreateListHolder constructor(itemView: View):
     RecyclerView.ViewHolder(itemView), View.OnClickListener
 {
-    val listNameTextView: TextView = itemView.list_name
+    val nameTextView: TextView = itemView.item_name
+    val priceTextView: TextView = itemView.item_price
+    val checkBox: CheckBox = itemView.check_box
 
     init
     { itemView.setOnClickListener(this) }
