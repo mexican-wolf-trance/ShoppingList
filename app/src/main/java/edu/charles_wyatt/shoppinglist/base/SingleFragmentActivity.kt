@@ -30,21 +30,21 @@ abstract class SingleFragmentActivity: AppCompatActivity()
                 .commit()
         }
 
-        addFrag?.listener = object: ViewListFragment.StateListener
-        {
-            override fun goToTheFrag()
-            {
-                var otherfragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as? AddItemFrag
-                if (otherfragment ==  null)
-                { otherfragment = AddItemFrag() }
-
-                if (!otherfragment.isAdded)
-                {
-                    supportFragmentManager.beginTransaction()
-                        .add(R.id.fragment_container, otherfragment)
-                        .commit()
-                }
-            }
-        }
+//        addFrag?.listener = object: ViewListFragment.StateListener
+//        {
+//            override fun goToTheFrag()
+//            {
+//                var otherfragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as? AddItemFrag
+//                if (otherfragment ==  null)
+//                { otherfragment = AddItemFrag() }
+//
+//                if (!otherfragment.isAdded)
+//                {
+//                    supportFragmentManager.beginTransaction()
+//                        .add(R.id.fragment_container, otherfragment)
+//                        .commit()
+//                }
+//            }
+//        }
     }
 }

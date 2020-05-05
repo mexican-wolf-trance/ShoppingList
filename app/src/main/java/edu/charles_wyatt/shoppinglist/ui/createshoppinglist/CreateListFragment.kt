@@ -30,6 +30,12 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
     private lateinit var createListRecyclerView: RecyclerView
     private lateinit var listAdapter: CreateListRecyclerViewAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     @InternalCoroutinesApi
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
@@ -39,6 +45,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
             listAdapter.setListCache(it)
         })
         setupUI()
+
     }
 
 

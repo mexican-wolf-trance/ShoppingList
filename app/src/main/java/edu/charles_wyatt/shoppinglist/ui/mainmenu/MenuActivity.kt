@@ -3,7 +3,9 @@ package edu.charles_wyatt.shoppinglist.ui.mainmenu
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import edu.charles_wyatt.shoppinglist.R
+import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.AddItemFrag
 import edu.charles_wyatt.shoppinglist.ui.viewshoppinglist.ListActivity
 import kotlinx.android.synthetic.main.menu_screen.*
 
@@ -22,8 +24,17 @@ class MenuActivity : AppCompatActivity() {
         }
         new_list.setOnClickListener()
         {
-            intent.putExtra("mode", 2)
-            startActivity(intent)
+            Log.e("TAG", "Frag button pressed")
+            var otherfragment = supportFragmentManager.findFragmentById(R.id.frag_layout) as? AddItemFrag
+            if (otherfragment == null)
+            {
+                otherfragment = AddItemFrag()
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frag_layout, otherfragment)
+                    .commit()
+            }
+//            intent.putExtra("mode", 1)
+//            startActivity(intent)
         }
         remove_list.setOnClickListener()
         {

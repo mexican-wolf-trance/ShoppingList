@@ -32,15 +32,27 @@ class ListActivity : AppCompatActivity() {
             override fun goToTheFrag()
             {
                 Log.e("TAG", "Frag button pressed")
-                var otherfragment = supportFragmentManager.findFragmentById(R.id.fragment_container2) as? AddItemFrag
+                var otherfragment = supportFragmentManager.findFragmentById(R.id.add_frag_layout) as? AddItemFrag
                 if (otherfragment == null)
                 {
                     otherfragment = AddItemFrag()
                     supportFragmentManager.beginTransaction()
-                        .add(R.id.fragment_container2, otherfragment)
+                        .replace(R.id.add_frag_layout, otherfragment)
                         .commit()
                 }
             }
         }
+//        fun goToFrag()
+//        {
+//            Log.e("TAG", "Frag button pressed")
+//            var otherfragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as? AddItemFrag
+//            if (otherfragment == null)
+//            {
+//                otherfragment = AddItemFrag()
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.fragment_container, otherfragment)
+//                    .commit()
+//            }
+//        }
     }
 }
