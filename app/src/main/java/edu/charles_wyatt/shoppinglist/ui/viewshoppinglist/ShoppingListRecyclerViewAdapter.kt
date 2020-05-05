@@ -27,10 +27,7 @@ private var lists: List<ShoppingList> = emptyList()
     {
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.fragment_view_list, parent, false)
-        val holder =
-            ShoppingListHolder(
-                view
-            )
+        val holder = ShoppingListHolder(view)
 
         holder.setOnClickListener {
             delegate?.selectedItemAtIndex(holder.adapterPosition)
@@ -41,7 +38,7 @@ private var lists: List<ShoppingList> = emptyList()
     override fun onBindViewHolder(holder: ShoppingListHolder, position: Int)
     {
         val list = lists[position]
-        holder.nameTextView.text = list.listName
+        holder.listNameTextView.text = list.listName
     }
 
     override fun getItemCount(): Int

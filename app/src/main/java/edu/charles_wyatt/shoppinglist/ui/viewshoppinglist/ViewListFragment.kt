@@ -48,11 +48,14 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         })
     }
 
+    @InternalCoroutinesApi
     override fun selectedItemAtIndex(index: Int)
     {
-        context?.let {
-            val intent = CreateListActivity.newIntent(it)
-            startActivity(intent)
+        context?.let {context ->
+            listModel.lists.value?.get(index)?.let {list ->
+                val intent = CreateListActivity.newIntent(context, list.id)
+                startActivity(intent)
+            }
         }
     }
 

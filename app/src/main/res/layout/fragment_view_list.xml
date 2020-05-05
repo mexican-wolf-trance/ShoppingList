@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
 
-    <TextView
+    <EditText
         android:id="@+id/list_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

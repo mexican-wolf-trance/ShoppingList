@@ -10,6 +10,6 @@ class ShoppingList(
     @PrimaryKey var id: UUID = UUID.randomUUID()) {
     @ColumnInfo var listName: String = ""
     @ColumnInfo var item: String = ""
-    @ColumnInfo var price: Double = 0.0
+    @ColumnInfo var price: String = ""
     @ColumnInfo var isBought: Boolean = false
 }
