@@ -14,7 +14,7 @@ import java.util.*
 
 class CreateListActivity : AppCompatActivity()
 {
-    @InternalCoroutinesApi
+
     private lateinit var listModel: CreateListViewModel
 
     companion object
@@ -28,7 +28,7 @@ class CreateListActivity : AppCompatActivity()
             return intent
         }
     }
-    @InternalCoroutinesApi
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -55,7 +55,7 @@ class CreateListActivity : AppCompatActivity()
         }
     }
 
-    @InternalCoroutinesApi
+
     override fun onBackPressed()
     {
         super.onBackPressed()

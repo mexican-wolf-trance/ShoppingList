@@ -25,7 +25,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
     private lateinit var itemPriceText: EditText
 //    private lateinit var listName: EditText
     private lateinit var checkBox: CheckBox
-    @InternalCoroutinesApi
+
     private lateinit var listModel: CreateListViewModel
     private lateinit var createListRecyclerView: RecyclerView
     private lateinit var listAdapter: CreateListRecyclerViewAdapter
@@ -36,7 +36,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         setHasOptionsMenu(true)
     }
 
-    @InternalCoroutinesApi
+
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
@@ -49,7 +49,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
     }
 
 
-    @InternalCoroutinesApi
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.create_list_recycler_view, container,false)
@@ -104,7 +104,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         }
     }
 
-    @InternalCoroutinesApi
+
     private fun setupUI()
     {
 //        itemNameText.setText(listModel.list.item)
@@ -112,7 +112,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
 //        checkBox.isChecked = listModel.list.isBought
     }
 
-    @InternalCoroutinesApi
+
     private val editTextWatcher = object: TextWatcher
     {
         override fun afterTextChanged(s: Editable?) {}
@@ -126,7 +126,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         }
     }
 
-    @InternalCoroutinesApi
+
     override fun selectedItemAtIndex(index: Int)
     {
         context?.let {context ->

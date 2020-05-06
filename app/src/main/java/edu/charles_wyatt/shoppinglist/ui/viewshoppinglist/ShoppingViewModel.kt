@@ -9,7 +9,7 @@ import edu.charles_wyatt.shoppinglist.database.ShoppingListDatabase
 import edu.charles_wyatt.shoppinglist.database.ShoppingListRepo
 import kotlinx.coroutines.InternalCoroutinesApi
 
-@InternalCoroutinesApi
+
 class ShoppingViewModel(application: Application) : AndroidViewModel(application)
 {
     val lists: LiveData<List<ShoppingList>>

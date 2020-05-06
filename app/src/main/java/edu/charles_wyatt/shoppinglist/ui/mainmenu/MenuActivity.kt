@@ -24,15 +24,15 @@ class MenuActivity : AppCompatActivity() {
         }
         new_list.setOnClickListener()
         {
-            Log.e("TAG", "Frag button pressed")
-            var otherfragment = supportFragmentManager.findFragmentById(R.id.frag_layout) as? AddItemFrag
-            if (otherfragment == null)
-            {
-                otherfragment = AddItemFrag()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.frag_layout, otherfragment)
-                    .commit()
-            }
+//            Log.e("TAG", "Frag button pressed")
+//            var otherfragment = supportFragmentManager.findFragmentById(R.id.frag_layout) as? AddItemFrag
+//            if (otherfragment == null)
+//            {
+//                otherfragment = AddItemFrag()
+//                supportFragmentManager.beginTransaction()
+//                    .replace(R.id.frag_layout, otherfragment)
+//                    .commit()
+//            }
 //            intent.putExtra("mode", 1)
 //            startActivity(intent)
         }

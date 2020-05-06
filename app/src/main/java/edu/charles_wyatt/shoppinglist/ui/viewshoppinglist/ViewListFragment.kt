@@ -28,7 +28,7 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
     }
     var listener: StateListener? = null
 
-    @InternalCoroutinesApi
+
     private lateinit var listModel: ShoppingViewModel
     private lateinit var shoppingListRecyclerView: RecyclerView
     private lateinit var listAdapter: ShoppingListRecyclerViewAdapter
@@ -55,7 +55,7 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         return view
     }
 
-    @InternalCoroutinesApi
+
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
@@ -65,7 +65,7 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         })
     }
 
-    @InternalCoroutinesApi
+
     override fun selectedItemAtIndex(index: Int)
     {
         context?.let {context ->
@@ -85,29 +85,4 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
             shoppingListRecyclerView.adapter = listAdapter
         }
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
-//    {
-//        super.onCreateOptionsMenu(menu, inflater)
-//        inflater.inflate(R.menu.shopping_list_menu, menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean
-//    {
-//        return when (item.itemId)
-//        {
-//            R.id.add_shopping_list_option ->
-//            {
-//                Log.e("TAG", "Button pressed")
-//                listener?.goToTheFrag()
-////                val intent = Intent(context, AddItemFrag::class.java)
-////                startActivity(intent)
-//                true
-//            }
-//            else ->
-//            {
-//                super.onOptionsItemSelected(item)
-//            }
-//        }
-//    }
 }

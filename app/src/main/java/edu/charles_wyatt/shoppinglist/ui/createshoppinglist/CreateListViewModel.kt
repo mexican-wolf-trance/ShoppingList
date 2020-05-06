@@ -10,7 +10,7 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
-@InternalCoroutinesApi
+
 class CreateListViewModel(application: Application): AndroidViewModel(application)
 {
     var list: ShoppingList = ShoppingList()

@@ -11,19 +11,27 @@ import android.widget.EditText
 import androidx.lifecycle.ViewModelProvider
 
 import edu.charles_wyatt.shoppinglist.R
+import edu.charles_wyatt.shoppinglist.ui.viewshoppinglist.ViewListFragment
 import kotlinx.android.synthetic.main.add_list_fragment.view.*
 import kotlinx.coroutines.InternalCoroutinesApi
 
-class AddItemFrag : Fragment() {
+class AddItemFrag : Fragment()
+{
 
-    @InternalCoroutinesApi
+
     private lateinit var listModel: CreateListViewModel
     private lateinit var listTitleVew: EditText
 //    private lateinit var nameTitleView: EditText
 //    private lateinit var priceTitleView: EditText
     private lateinit var submitBtnView: Button
+    var listener: AddStateListener? = null
 
-    @InternalCoroutinesApi
+    interface AddStateListener
+    {
+        fun backToView()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -31,7 +39,7 @@ class AddItemFrag : Fragment() {
 
     }
 
-    @InternalCoroutinesApi
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
@@ -41,12 +49,13 @@ class AddItemFrag : Fragment() {
         listTitleVew = view.list_title
 //        nameTitleView = view.name_title
 //        priceTitleView = view.price_title
-        submitBtnView = view.submit_btn
+//        submitBtnView = view.submit_btn
 
-        submitBtnView.setOnClickListener()
-        {
-            listModel.save()
-        }
+//        submitBtnView.setOnClickListener()
+//        {
+//            listModel.save()
+//            listener?.backToView()
+//        }
 
         return view
     }
