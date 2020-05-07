@@ -11,11 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
-import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.AddItemFrag
 import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListActivity
-import kotlinx.android.synthetic.main.create_list_recycler_view.view.*
 import kotlinx.android.synthetic.main.fragment_view_list_recycler.view.*
-import kotlinx.coroutines.InternalCoroutinesApi
 
 class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 {
@@ -45,6 +42,8 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
         val view = inflater.inflate(R.layout.fragment_view_list_recycler, container, false)
         shoppingListRecyclerView = view.shopping_recycler_view
         shoppingListRecyclerView.layoutManager = LinearLayoutManager(activity)
+
+
         addNewListButton = view.add_new_list_btn
         addNewListButton.setOnClickListener()
         {
@@ -73,6 +72,16 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
                 val intent = CreateListActivity.newIntent(context, list.id)
                 startActivity(intent)
             }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+    {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.e("TAG", "received a result: ${data?.getStringExtra("shoppingListName")}")
+        listModel.list.listName = data?.getStringExtra("shoppingListName").toString()
+        context?.let {
+            listModel.save()
         }
     }
 

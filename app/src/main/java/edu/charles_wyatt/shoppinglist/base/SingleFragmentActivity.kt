@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import edu.charles_wyatt.shoppinglist.ui.viewshoppinglist.ViewListFragment
 import edu.charles_wyatt.shoppinglist.R
-import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.AddItemFrag
-import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListFragment
 
 
 abstract class SingleFragmentActivity: AppCompatActivity()
