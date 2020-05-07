@@ -14,11 +14,11 @@ class AddItemDiag : DialogFragment()
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog
     {
         return AlertDialog.Builder(context!!)
-            .setView(R.layout.create_list_fragment)
-            .setTitle("Shopping List Name")
+            .setView(R.layout.add_items_diag)
+            .setTitle("Item Name")
             .setPositiveButton(android.R.string.ok) { dialog, buttonId ->
-                val itemName = (dialog as AlertDialog).findViewById<EditText>(R.id.item_name)
-                val itemPrice = (dialog as AlertDialog).findViewById<EditText>(R.id.item_price)
+                val itemName = (dialog as AlertDialog).findViewById<EditText>(R.id.item_title)
+                val itemPrice = dialog.findViewById<EditText>(R.id.price_title)
                 val intent = Intent()
                 intent.putExtra("shoppingItemName", itemName?.text.toString())
                 intent.putExtra("shoppingItemPrice", itemPrice?.text.toString())

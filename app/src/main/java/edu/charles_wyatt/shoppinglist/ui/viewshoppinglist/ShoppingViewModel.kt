@@ -3,11 +3,9 @@ package edu.charles_wyatt.shoppinglist.ui.viewshoppinglist
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
 import edu.charles_wyatt.shoppinglist.database.ShoppingList
 import edu.charles_wyatt.shoppinglist.database.ShoppingListDatabase
 import edu.charles_wyatt.shoppinglist.database.ShoppingListRepo
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 
 

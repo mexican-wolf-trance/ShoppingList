@@ -12,11 +12,11 @@ class CreateListRecyclerViewAdapter (private val context: Context) :
 {
     private var lists: List<ShoppingList> = emptyList()
 
-    var delegate: Delegate? = null
-    interface Delegate
-    {
-        fun selectedItemAtIndex(index: Int)
-    }
+//    var delegate: Delegate? = null
+//    interface Delegate
+//    {
+//        fun selectedItemAtIndex(index: Int)
+//    }
 
     fun setListCache(lists: List<ShoppingList>)
     {
@@ -30,9 +30,9 @@ class CreateListRecyclerViewAdapter (private val context: Context) :
         val view = inflater.inflate(R.layout.create_list_fragment, parent, false)
         val holder = CreateListHolder(view)
 
-        holder.setOnClickListener {
-            delegate?.selectedItemAtIndex(holder.adapterPosition)
-        }
+//        holder.setOnClickListener {
+//            delegate?.selectedItemAtIndex(holder.adapterPosition)
+//        }
         return holder
     }
 

@@ -13,7 +13,7 @@
         android:padding="4dp"
         android:layout_alignParentRight="true" />
 
-    <EditText
+    <TextView
         android:id="@+id/item_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
         tools:text="Name"
         android:textAppearance="?attr/textAppearanceListItem" />
 
-    <EditText
+    <TextView
         android:id="@+id/item_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

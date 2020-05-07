@@ -8,4 +8,7 @@
     <string name="submit">Submit</string>
     <string name="add_list_hint">Enter your new list name here</string>
     <string name="add_new_list">Add a New List!</string>
+    <string name="add_new_item">Add your item and price!</string>
+    <string name="add_item_hint">Item name here</string>
+    <string name="add_price_hint">Item the item\'s price</string>
 </resources>

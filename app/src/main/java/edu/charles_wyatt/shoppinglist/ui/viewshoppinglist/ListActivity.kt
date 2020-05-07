@@ -8,7 +8,6 @@ import edu.charles_wyatt.shoppinglist.R
 class ListActivity : AppCompatActivity()
 {
     private var addFrag: ViewListFragment? = null
-//    private var viewFrag: AddItemFrag? = null
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -43,29 +42,6 @@ class ListActivity : AppCompatActivity()
                 diagFrag.setTargetFragment(addFrag, Activity.RESULT_OK)
                 diagFrag.show(thisFrag, "dialog")
             }
-
-
         }
-
-//        viewFrag = AddItemFrag()
-//        viewFrag?.listener = object : AddItemFrag.AddStateListener
-//        {
-//            override fun backToView()
-//            {
-//                Log.e("TAG", "Back to view!")
-//                var nextfragment = supportFragmentManager.findFragmentById(R.id.fragment_container) as? ViewListFragment
-//                if (nextfragment == null) {
-//                    nextfragment = ViewListFragment()
-//                }
-//
-//                if (!nextfragment.isAdded) {
-//                    nextfragment = ViewListFragment()
-//                    supportFragmentManager.beginTransaction()
-//                        .add(R.id.fragment_container, nextfragment)
-//                        .commit()
-//                }
-//            }
-//        }
-
     }
 }
