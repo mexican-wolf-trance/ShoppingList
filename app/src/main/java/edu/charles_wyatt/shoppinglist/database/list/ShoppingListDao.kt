@@ -1,16 +1,17 @@
-package edu.charles_wyatt.shoppinglist.database
+package edu.charles_wyatt.shoppinglist.database.list
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
 import java.util.*
 
 @Dao
 interface ShoppingListDao
 {
-    @Query("SELECT * FROM shopping ORDEr BY id ASC")
+    @Query("SELECT * FROM list ORDEr BY id ASC")
     fun allLists(): LiveData<List<ShoppingList>>
 
-    @Query("SELECT * FROM shopping WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM list WHERE id = :id LIMIT 1")
     suspend fun forID(id: UUID): ShoppingList?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

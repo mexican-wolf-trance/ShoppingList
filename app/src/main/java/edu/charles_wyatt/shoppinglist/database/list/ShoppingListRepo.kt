@@ -1,6 +1,8 @@
-package edu.charles_wyatt.shoppinglist.database
+package edu.charles_wyatt.shoppinglist.database.list
 
 import androidx.lifecycle.LiveData
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingListDao
 import java.util.*
 
 class ShoppingListRepo (private val listDao: ShoppingListDao)

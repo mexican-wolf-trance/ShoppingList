@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import edu.charles_wyatt.shoppinglist.R
-import edu.charles_wyatt.shoppinglist.database.ShoppingList
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
+import edu.charles_wyatt.shoppinglist.database.listItems.Item
 
 class CreateListRecyclerViewAdapter (private val context: Context) :
     RecyclerView.Adapter<CreateListHolder>()
 {
-    private var lists: List<ShoppingList> = emptyList()
+    private var items: List<Item> = emptyList()
 
     var delegate: Delegate? = null
     interface Delegate
@@ -18,9 +19,9 @@ class CreateListRecyclerViewAdapter (private val context: Context) :
         fun selectedItemAtIndex(index: Int)
     }
 
-    fun setListCache(lists: List<ShoppingList>)
+    fun setListCache(items: List<Item>)
     {
-        this.lists = lists
+        this.items = items
         notifyDataSetChanged()
     }
 
@@ -38,15 +39,15 @@ class CreateListRecyclerViewAdapter (private val context: Context) :
 
     override fun onBindViewHolder(holder: CreateListHolder, position: Int)
     {
-        val list = lists[position]
-        holder.nameTextView.text = list.item
-        holder.priceTextView.text = list.price
-        holder.checkBox.isChecked = list.isBought
+        val item = items[position]
+        holder.nameTextView.text = item.name
+        holder.priceTextView.text = item.price.toString()
+        holder.checkBox.isChecked = item.isBought
     }
 
     override fun getItemCount(): Int
     {
-        return lists.size
+        return items.size
     }
 
 }

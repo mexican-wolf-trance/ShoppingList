@@ -5,6 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingListDao
 
 
 @Database(entities = [ShoppingList::class], version = 1)
@@ -20,7 +22,8 @@ abstract class ShoppingListDatabase: RoomDatabase()
 
         fun get(context: Context): ShoppingListDatabase
         {
-            val currentInstance = INSTANCE
+            val currentInstance =
+                INSTANCE
             if (currentInstance != null)
                 return currentInstance
 

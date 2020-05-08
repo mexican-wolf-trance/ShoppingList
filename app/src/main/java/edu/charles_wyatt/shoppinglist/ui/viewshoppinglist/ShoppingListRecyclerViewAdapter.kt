@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import edu.charles_wyatt.shoppinglist.R
-import edu.charles_wyatt.shoppinglist.database.ShoppingList
+import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
 
 class ShoppingListRecyclerViewAdapter(private val context: Context) : RecyclerView.Adapter<ShoppingListHolder>()
 {
