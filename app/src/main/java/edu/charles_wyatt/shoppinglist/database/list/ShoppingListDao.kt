@@ -8,7 +8,7 @@ import java.util.*
 @Dao
 interface ShoppingListDao
 {
-    @Query("SELECT * FROM list ORDEr BY id ASC")
+    @Query("SELECT * FROM list ORDER BY id ASC")
     fun allLists(): LiveData<List<ShoppingList>>
 
     @Query("SELECT * FROM list WHERE id = :id LIMIT 1")
