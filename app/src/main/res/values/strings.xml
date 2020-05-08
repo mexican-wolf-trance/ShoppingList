@@ -11,4 +11,6 @@
     <string name="add_new_item">Add your item and price!</string>
     <string name="add_item_hint">Item name here</string>
     <string name="add_price_hint">Item the item\'s price</string>
+    <string name="add_item_btn">Add item</string>
+    <string name="add_list_btn">Add new list</string>
 </resources>

@@ -16,9 +16,6 @@ import kotlinx.android.synthetic.main.fragment_view_list_recycler.view.*
 
 class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 {
-//    companion object
-//    { fun newInstance() = ViewListFragment() }
-
     interface StateListener
     {
        fun goToTheFrag()

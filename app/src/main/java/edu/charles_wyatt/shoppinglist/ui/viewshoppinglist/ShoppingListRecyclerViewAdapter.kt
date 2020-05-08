@@ -39,8 +39,6 @@ private var lists: List<ShoppingList> = emptyList()
     {
         val list = lists[position]
         holder.listNameTextView.text = list.listName
-//        holder.listNameTextView.text = "List"
-
     }
 
     override fun getItemCount(): Int
