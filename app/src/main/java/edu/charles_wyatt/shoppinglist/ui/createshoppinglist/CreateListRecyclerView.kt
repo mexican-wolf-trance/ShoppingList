@@ -8,8 +8,7 @@ import edu.charles_wyatt.shoppinglist.R
 import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
 import edu.charles_wyatt.shoppinglist.database.listItems.Item
 
-class CreateListRecyclerViewAdapter (private val context: Context) :
-    RecyclerView.Adapter<CreateListHolder>()
+class CreateListRecyclerViewAdapter (private val context: Context) : RecyclerView.Adapter<CreateListHolder>()
 {
     private var items: List<Item> = emptyList()
 
@@ -45,9 +44,5 @@ class CreateListRecyclerViewAdapter (private val context: Context) :
         holder.checkBox.isChecked = item.isBought
     }
 
-    override fun getItemCount(): Int
-    {
-        return items.size
-    }
-
+    override fun getItemCount() = items.size
 }

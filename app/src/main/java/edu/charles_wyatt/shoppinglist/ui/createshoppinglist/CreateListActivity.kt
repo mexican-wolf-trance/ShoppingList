@@ -4,30 +4,25 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
-import edu.charles_wyatt.shoppinglist.ui.viewshoppinglist.AddListDialogue
-
-import kotlinx.android.synthetic.main.activity_create_list.*
-import kotlinx.coroutines.InternalCoroutinesApi
 import java.util.*
 
 class CreateListActivity : AppCompatActivity()
 {
 
-    private lateinit var listModel: CreateListViewModel
+    private lateinit var itemModel: CreateListViewModel
     private lateinit var addItemDiagFrag: CreateListFragment
 
     companion object
     {
-        private const val EXTRA_LIST_ID = "edu.charles_wyatt.shoppinglist.id"
+        private const val EXTRA_LIST_ID = "edu.charles_wyatt.shoppinglist.database.shoppinglist.id"
 
-        fun newIntent(context: Context, listID: UUID): Intent
+        fun newIntent(context: Context, listId: UUID): Intent
         {
             val intent = Intent(context, CreateListActivity::class.java)
-            intent.putExtra(EXTRA_LIST_ID, listID)
+            intent.putExtra(EXTRA_LIST_ID, listId)
             return intent
         }
     }
@@ -47,11 +42,12 @@ class CreateListActivity : AppCompatActivity()
                 .add(R.id.activity_create_list, fragment)
                 .commit()
         }
-        listModel = ViewModelProvider(this).get(CreateListViewModel::class.java)
+        itemModel = ViewModelProvider(this).get(CreateListViewModel::class.java)
         intent?.let {
             val listID = it.getSerializableExtra(EXTRA_LIST_ID) as? UUID
             listID?.let{id ->
-                listModel.loadList(id)
+                itemModel.loadList(id)
+                itemModel.setListId(id)
             }
         }
 
@@ -78,6 +74,6 @@ class CreateListActivity : AppCompatActivity()
     override fun onBackPressed()
     {
         super.onBackPressed()
-        listModel.save()
+        itemModel.save()
     }
 }

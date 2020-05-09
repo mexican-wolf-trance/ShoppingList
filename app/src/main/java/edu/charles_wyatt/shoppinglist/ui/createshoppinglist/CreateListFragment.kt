@@ -51,7 +51,7 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
     {
         super.onActivityCreated(savedInstanceState)
         listModel = ViewModelProvider(activity!!).get(CreateListViewModel::class.java)
-        listModel.lists.observe(viewLifecycleOwner, Observer {
+        listModel.items.observe(viewLifecycleOwner, Observer {
             listAdapter.setListCache(it)
         })
         setupUI()
@@ -118,8 +118,8 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         super.onActivityResult(requestCode, resultCode, data)
         Log.e("TAG", "received a result: ${data?.getStringExtra("shoppingItemName")}")
         Log.e("TAG", "received a result: ${data?.getStringExtra("shoppingItemPrice")}")
-        listModel.list.item = data?.getStringExtra("shoppingItemName").toString()
-        listModel.list.price = data?.getStringExtra("shoppingItemPrice").toString()
+        listModel.item.name = data?.getStringExtra("shoppingItemName").toString()
+        listModel.item.price = data?.getStringExtra("shoppingItemPrice").toString().toDouble()
         context?.let {
             listModel.save()
         }
@@ -137,9 +137,9 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
 
     private fun setupUI()
     {
-        itemNameText.text = listModel.list.item
-        itemPriceText.text = listModel.list.price
-        checkBox.isChecked = listModel.list.isBought
+        itemNameText.text = listModel.item.name
+        itemPriceText.text = listModel.item.price.toString()
+        checkBox.isChecked = listModel.item.isBought
     }
 
 

@@ -6,8 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.create_list_fragment.view.*
 
-class CreateListHolder constructor(itemView: View):
-    RecyclerView.ViewHolder(itemView), View.OnClickListener
+class CreateListHolder constructor(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener
 {
     val nameTextView: TextView = itemView.item_name
     val priceTextView: TextView = itemView.item_price

@@ -13,8 +13,7 @@ class ShoppingViewModel(application: Application) : AndroidViewModel(application
 {
     val lists: LiveData<List<ShoppingList>>
 
-    var list: ShoppingList =
-        ShoppingList()
+    var list: ShoppingList = ShoppingList()
         private set
 
     private var listRepo: ShoppingListRepo
@@ -22,8 +21,7 @@ class ShoppingViewModel(application: Application) : AndroidViewModel(application
     init
     {
         val dao = ShoppingListDatabase.get(application).shoppingListDao()
-        listRepo =
-            ShoppingListRepo(dao)
+        listRepo = ShoppingListRepo(dao)
         this.lists = listRepo.lists
     }
 

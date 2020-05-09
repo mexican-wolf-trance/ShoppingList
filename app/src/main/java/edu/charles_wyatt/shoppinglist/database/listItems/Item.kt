@@ -19,10 +19,10 @@ import java.util.*
        )
     ]
 )
-class Item (
+class Item(
     @PrimaryKey var id: UUID = UUID.randomUUID(),
-    @ColumnInfo(name = "list_id") val listId: UUID,
-    @ColumnInfo var name: String,
-    @ColumnInfo var price: Double,
-    @ColumnInfo var isBought: Boolean
+    @ColumnInfo(name = "list_Id") val listId: UUID,
+    var name: String = "",
+    var price: Double = 0.0,
+    var isBought: Boolean = false
 )

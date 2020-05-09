@@ -3,46 +3,52 @@ package edu.charles_wyatt.shoppinglist.ui.createshoppinglist
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
 import edu.charles_wyatt.shoppinglist.database.ShoppingListDatabase
-import edu.charles_wyatt.shoppinglist.database.list.ShoppingListRepo
+import edu.charles_wyatt.shoppinglist.database.listItems.Item
+import edu.charles_wyatt.shoppinglist.database.listItems.ItemRepo
 import kotlinx.coroutines.runBlocking
 import java.util.*
 
 
 class CreateListViewModel(application: Application): AndroidViewModel(application)
 {
-    var list: ShoppingList =
-        ShoppingList()
+
+    private lateinit var listId: UUID
+
+    fun setListId(id: UUID)
+    { listId = id }
+
+//    fun getListId(listId: UUID) = listId
+
+    var items: LiveData<List<Item>>
+
+    var item: Item = Item(listId)
     private set
 
-    val lists: LiveData<List<ShoppingList>>
-
-    private var listRepo: ShoppingListRepo
+    private var itemRepo: ItemRepo
 
     init
     {
-        val dao = ShoppingListDatabase.get(application).shoppingListDao()
-        listRepo =
-            ShoppingListRepo(dao)
-        this.lists = listRepo.lists
+        val dao = ShoppingListDatabase.get(application).itemDao()
+        itemRepo = ItemRepo(dao)
+        this.items = itemRepo.items
     }
 
-    fun loadList(uuid: UUID)
+    fun loadList(listId: UUID)
     {
         runBlocking {
-            listRepo.listForId(uuid)?.let {fetchedList ->
-                this@CreateListViewModel.list = fetchedList
+            itemRepo.getItems(listId)?.let {fetchedList ->
+                this@CreateListViewModel.items = fetchedList
             }
         }
     }
 
     fun save()
     {
-        if (list.listName.isNotEmpty())
+        if (item.name.isNotEmpty())
         {
             runBlocking {
-                listRepo.insert(this@CreateListViewModel.list)
+                itemRepo.insert(this@CreateListViewModel.item)
             }
         }
     }
