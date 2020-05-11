@@ -71,9 +71,9 @@ class CreateListActivity : AppCompatActivity()
     }
 
 
-    override fun onBackPressed()
-    {
-        super.onBackPressed()
-        itemModel.save()
-    }
+//    override fun onBackPressed()
+//    {
+//        super.onBackPressed()
+//        itemModel.save()
+//    }
 }

@@ -13,7 +13,8 @@ import java.util.*
 class CreateListViewModel(application: Application): AndroidViewModel(application)
 {
 
-    private lateinit var listId: UUID
+    lateinit var listId: UUID
+    private set
 
     fun setListId(id: UUID)
     { listId = id }
@@ -22,7 +23,7 @@ class CreateListViewModel(application: Application): AndroidViewModel(applicatio
 
     var items: LiveData<List<Item>>
 
-    var item: Item = Item(listId)
+    var item: Item? = listId?.let { Item(it) }
     private set
 
     private var itemRepo: ItemRepo
@@ -45,10 +46,10 @@ class CreateListViewModel(application: Application): AndroidViewModel(applicatio
 
     fun save()
     {
-        if (item.name.isNotEmpty())
+        if (item?.name?.isNotEmpty()!!)
         {
             runBlocking {
-                itemRepo.insert(this@CreateListViewModel.item)
+                itemRepo.insert(this@CreateListViewModel.item!!)
             }
         }
     }
