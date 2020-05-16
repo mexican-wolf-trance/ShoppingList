@@ -1,14 +1,14 @@
 package edu.charles_wyatt.shoppinglist.ui.createshoppinglist
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,11 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.charles_wyatt.shoppinglist.R
 import kotlinx.android.synthetic.main.create_list_fragment.view.*
-import kotlinx.android.synthetic.main.create_list_recycler_view.*
 import kotlinx.android.synthetic.main.create_list_recycler_view.view.*
-import kotlinx.android.synthetic.main.create_list_recycler_view.view.another
-import kotlinx.android.synthetic.main.fragment_view_list.view.*
-import kotlinx.coroutines.InternalCoroutinesApi
 
 class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
 {
@@ -75,7 +71,16 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         addItemBtn = view.another
         addItemBtn.setOnClickListener()
         {
-            listener?.toAddItemDiag()
+            val thisFrag = parentFragmentManager.beginTransaction()
+            val prev = parentFragmentManager.findFragmentByTag("dialog")
+            if (prev != null)
+            {
+                thisFrag.remove(prev)
+            }
+            thisFrag.addToBackStack(null)
+            val diagFrag = AddItemDiag()
+            diagFrag.setTargetFragment(this, Activity.RESULT_OK)
+            diagFrag.show(thisFrag, "dialog")
         }
 
 
@@ -118,11 +123,12 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         super.onActivityResult(requestCode, resultCode, data)
         Log.e("TAG", "received a result: ${data?.getStringExtra("shoppingItemName")}")
         Log.e("TAG", "received a result: ${data?.getStringExtra("shoppingItemPrice")}")
-        listModel.item.name = data?.getStringExtra("shoppingItemName").toString()
-        listModel.item.price = data?.getStringExtra("shoppingItemPrice").toString().toDouble()
-        context?.let {
-            listModel.save()
-        }
+
+        val name = data?.getStringExtra("shoppingItemName").toString()
+        val price = data?.getStringExtra("shoppingItemPrice").toString().toDouble()
+//        listModel.item?.name = data?.getStringExtra("shoppingItemName").toString()
+//        listModel.item?.price = data?.getStringExtra("shoppingItemPrice").toString().toDouble()
+        listModel.createItemWith(name, price)
     }
 
     private fun updateUI()
@@ -137,9 +143,9 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
 
     private fun setupUI()
     {
-        itemNameText.text = listModel.item.name
-        itemPriceText.text = listModel.item.price.toString()
-        checkBox.isChecked = listModel.item.isBought
+        itemNameText.text = listModel.item?.name
+        itemPriceText.text = listModel.item?.price.toString()
+        checkBox.isChecked = listModel.item?.isBought ?: false
     }
 
 

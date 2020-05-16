@@ -45,9 +45,9 @@ class CreateListActivity : AppCompatActivity()
         itemModel = ViewModelProvider(this).get(CreateListViewModel::class.java)
         intent?.let {
             val listID = it.getSerializableExtra(EXTRA_LIST_ID) as? UUID
-            listID?.let{id ->
+            listID?.let { id ->
                 itemModel.loadList(id)
-                itemModel.setListId(id)
+//                itemModel.setListId(id)
             }
         }
 

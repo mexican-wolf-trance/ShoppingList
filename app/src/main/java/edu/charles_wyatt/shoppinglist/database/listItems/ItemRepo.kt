@@ -8,7 +8,7 @@ class ItemRepo(private val itemDao: ItemDao)
 {
 //    val list = LiveData<List<ShoppingList>>
 
-    val items: LiveData<List<Item>> = itemDao.getItems()
+//    val items: LiveData<List<Item>> = itemDao.getItems()
 
     fun getItems(listId: UUID) = itemDao.getItems(listId)
 
