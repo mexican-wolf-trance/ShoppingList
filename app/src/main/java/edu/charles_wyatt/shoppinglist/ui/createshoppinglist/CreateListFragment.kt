@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import edu.charles_wyatt.shoppinglist.R
-import kotlinx.android.synthetic.main.create_list_fragment.view.*
 import kotlinx.android.synthetic.main.create_list_recycler_view.view.*
 
 class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
@@ -59,14 +58,9 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?
     {
         val view = inflater.inflate(R.layout.create_list_recycler_view, container,false)
-        val otherview = inflater.inflate(R.layout.create_list_fragment, container, false)
         createListRecyclerView = view.create_list_recycler_view
         createListRecyclerView.layoutManager = LinearLayoutManager(activity)
         updateUI()
-
-        itemNameText = otherview.item_name
-        itemPriceText = otherview.item_price
-        checkBox = otherview.check_box
 
         addItemBtn = view.another
         addItemBtn.setOnClickListener()
@@ -126,8 +120,6 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
 
         val name = data?.getStringExtra("shoppingItemName").toString()
         val price = data?.getStringExtra("shoppingItemPrice").toString().toDouble()
-//        listModel.item?.name = data?.getStringExtra("shoppingItemName").toString()
-//        listModel.item?.price = data?.getStringExtra("shoppingItemPrice").toString().toDouble()
         listModel.createItemWith(name, price)
     }
 
@@ -149,18 +141,6 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
     }
 
 
-//    private val editTextWatcher = object: TextWatcher
-//    {
-//        override fun afterTextChanged(s: Editable?) {}
-//        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-//        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int)
-//        {
-//            s?.let {
-//                listModel.list.item = it.toString()
-//                listModel.list.price = it.toString()
-//            }
-//        }
-//    }
 
 
     override fun selectedItemAtIndex(index: Int)
