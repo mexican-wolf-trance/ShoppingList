@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.lifecycle.ViewModelProvider
 import edu.charles_wyatt.shoppinglist.R
 import edu.charles_wyatt.shoppinglist.ui.createshoppinglist.CreateListActivity
+import kotlinx.android.synthetic.main.create_list_fragment.*
 import kotlinx.android.synthetic.main.fragment_view_list_recycler.view.*
 
 class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
@@ -42,6 +43,14 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
 
 
         addNewListButton = view.add_new_list_btn
+//        delete_btn.setOnClickListener()
+//        {
+//            context?.let{
+//                listModel.lists.value?.get(index).let{list ->
+//                    list?.id?.let { it1 -> listModel.delete(it1) }
+//                }
+//            }
+//        }
         addNewListButton.setOnClickListener()
         {
             listener?.goToTheFrag()
@@ -68,6 +77,15 @@ class ViewListFragment : Fragment(), ShoppingListRecyclerViewAdapter.Delegate
             listModel.lists.value?.get(index)?.let {list ->
                 val intent = CreateListActivity.newIntent(context, list.id)
                 startActivity(intent)
+            }
+        }
+    }
+
+    override fun deleteItemAtIndex(index: Int)
+    {
+        context?.let{
+            listModel.lists.value?.get(index).let{list ->
+                list?.id?.let { it1 -> listModel.delete(it1) }
             }
         }
     }

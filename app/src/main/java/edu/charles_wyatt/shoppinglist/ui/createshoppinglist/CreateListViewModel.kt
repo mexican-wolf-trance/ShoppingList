@@ -24,8 +24,8 @@ class CreateListViewModel(application: Application): AndroidViewModel(applicatio
 //    fun getListId(listId: UUID) = listId
 
     private val _items = MutableLiveData<List<Item>>()
-
     var items = Transformations.map(_items){ it }
+
     var item: Item? = null
     private set
 
@@ -42,7 +42,7 @@ class CreateListViewModel(application: Application): AndroidViewModel(applicatio
     {
         this.listId = listId
         runBlocking {
-            itemRepo.getItems(listId)?.let {fetchedList ->
+            itemRepo.getItems(listId).let { fetchedList ->
                 this@CreateListViewModel.items = fetchedList
             }
         }
@@ -64,6 +64,13 @@ class CreateListViewModel(application: Application): AndroidViewModel(applicatio
         item.name = name
         item.price = price
         this.save(item)
+    }
+
+    fun deleteItemAtIndex(id: UUID)
+    {
+        runBlocking {
+            itemRepo.delete(itemId = id)
+        }
     }
 
 }

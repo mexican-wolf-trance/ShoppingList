@@ -14,18 +14,15 @@
         android:textSize="30sp"
         android:textAppearance="?attr/textAppearanceListItem" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/item_price"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/list_name"-->
-<!--        android:textAppearance="?attr/textAppearanceListItem"-->
-<!--        android:padding="4dp"-->
-<!--        tools:text="Price" />-->
-<!--    <Button-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        bottom-->
-<!--        />-->
+    <ImageButton
+        android:id="@+id/list_delete_btn"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:background="@color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="6dp"
+        android:src="@android:drawable/btn_dialog"
+        android:contentDescription="delete button"
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>

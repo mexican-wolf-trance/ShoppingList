@@ -15,6 +15,7 @@ private var lists: List<ShoppingList> = emptyList()
     interface Delegate
     {
         fun selectedItemAtIndex(index: Int)
+        fun deleteItemAtIndex(index: Int)
     }
 
     fun setListCache(lists: List<ShoppingList>)
@@ -29,8 +30,11 @@ private var lists: List<ShoppingList> = emptyList()
         val view = inflater.inflate(R.layout.fragment_view_list, parent, false)
         val holder = ShoppingListHolder(view)
 
-        holder.setOnClickListener {
+        holder.listNameTextView.setOnClickListener {
             delegate?.selectedItemAtIndex(holder.adapterPosition)
+        }
+        holder.deleteButton.setOnClickListener {
+            delegate?.deleteItemAtIndex(holder.adapterPosition)
         }
         return holder
     }
@@ -41,9 +45,6 @@ private var lists: List<ShoppingList> = emptyList()
         holder.listNameTextView.text = list.listName
     }
 
-    override fun getItemCount(): Int
-    {
-        return lists.size
-    }
+    override fun getItemCount(): Int = lists.size
 
 }

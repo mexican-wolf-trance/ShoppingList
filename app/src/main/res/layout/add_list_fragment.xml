@@ -21,27 +21,5 @@
         android:hint="@string/add_list_hint"
         android:inputType="text" />
 
-<!--    <EditText-->
-<!--        android:id="@+id/name_title"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/list_title"-->
-<!--        />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/price_title"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/name_title"-->
-<!--        />-->
-
-<!--    <Button-->
-<!--        android:id="@+id/submit_btn"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/list_title"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:text="@string/submit"/>-->
-
 
 </RelativeLayout>

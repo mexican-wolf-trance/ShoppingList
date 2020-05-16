@@ -34,4 +34,18 @@
         tools:text="Price"
         android:layout_toLeftOf="@id/check_box" />
 
+    <ImageButton
+        android:id="@+id/delete_btn"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        android:background="@color/white"
+        android:layout_below="@+id/check_box"
+        android:layout_toEndOf="@+id/item_price"
+        android:layout_toRightOf="@+id/item_price"
+        android:src="@android:drawable/btn_dialog"
+        android:textSize="12sp"
+        android:layout_marginLeft="4dp"
+        android:contentDescription="delete button"
+        android:layout_marginStart="4dp" />
+
 </RelativeLayout>

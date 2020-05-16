@@ -17,6 +17,6 @@ interface ShoppingListDao
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(list: ShoppingList)
 
-    @Delete
-    suspend fun delete(list: ShoppingList)
+    @Query("DELETE FROM list WHERE id = :id")
+    suspend fun delete(id: UUID)
 }

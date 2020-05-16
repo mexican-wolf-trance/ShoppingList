@@ -12,4 +12,6 @@ class ShoppingListRepo (private val listDao: ShoppingListDao)
     suspend fun insert(list: ShoppingList) = listDao.upsert(list)
 
     suspend fun listForId(id: UUID): ShoppingList? = listDao.forID(id)
+
+    suspend fun delete(id: UUID)  = listDao.delete(id)
 }

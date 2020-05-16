@@ -1,6 +1,5 @@
 package edu.charles_wyatt.shoppinglist.ui.createshoppinglist
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -47,33 +46,7 @@ class CreateListActivity : AppCompatActivity()
             val listID = it.getSerializableExtra(EXTRA_LIST_ID) as? UUID
             listID?.let { id ->
                 itemModel.loadList(id)
-//                itemModel.setListId(id)
-            }
-        }
-
-        addItemDiagFrag = fragment
-        addItemDiagFrag.listener = object : CreateListFragment.CreateListListener
-        {
-            override fun toAddItemDiag()
-            {
-                val thisFrag = supportFragmentManager.beginTransaction()
-                val prev = supportFragmentManager.findFragmentByTag("dialog")
-                if (prev != null)
-                {
-                    thisFrag.remove(prev)
-                }
-                thisFrag.addToBackStack(null)
-                val diagFrag = AddItemDiag()
-                diagFrag.setTargetFragment(addItemDiagFrag, Activity.RESULT_OK)
-                diagFrag.show(thisFrag, "dialog")
             }
         }
     }
-
-
-//    override fun onBackPressed()
-//    {
-//        super.onBackPressed()
-//        itemModel.save()
-//    }
 }

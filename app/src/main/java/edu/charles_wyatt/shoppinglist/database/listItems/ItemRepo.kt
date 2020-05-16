@@ -17,6 +17,4 @@ class ItemRepo(private val itemDao: ItemDao)
     suspend fun delete(itemId: UUID) = itemDao.delete(itemId)
 
     suspend fun insert(item: Item) = itemDao.insert(item)
-
-    suspend fun delete(item: Item) = itemDao.delete(item)
 }

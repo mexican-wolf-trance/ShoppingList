@@ -35,21 +35,22 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         setHasOptionsMenu(true)
     }
 
-    interface CreateListListener
-    {
-        fun toAddItemDiag()
-    }
-    var listener: CreateListListener? = null
+//    interface CreateListListener
+//    {
+//        fun toAddItemDiag()
+//    }
+//    var listener: CreateListListener? = null
 
 
     override fun onActivityCreated(savedInstanceState: Bundle?)
     {
         super.onActivityCreated(savedInstanceState)
-        listModel = ViewModelProvider(activity!!).get(CreateListViewModel::class.java)
+        listModel = ViewModelProvider(requireActivity()).get(CreateListViewModel::class.java)
         listModel.items.observe(viewLifecycleOwner, Observer {
             listAdapter.setListCache(it)
         })
-        setupUI()
+        if(this::itemNameText.isInitialized)
+        { setupUI() }
 
     }
 
@@ -89,28 +90,6 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
         return view
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater)
-//    {
-//        super.onCreateOptionsMenu(menu, inflater)
-//        inflater.inflate(R.menu.create_list_menu, menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean
-//    {
-//        return when (item.itemId)
-//        {
-//            R.id.add_create_list_option ->
-//            {
-//                val intent = Intent(context, CreateListActivity::class.java)
-//                startActivity(intent)
-//                true
-//            }
-//            else ->
-//            {
-//                super.onOptionsItemSelected(item)
-//            }
-//        }
-//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
     {
@@ -145,11 +124,10 @@ class CreateListFragment : Fragment(), CreateListRecyclerViewAdapter.Delegate
 
     override fun selectedItemAtIndex(index: Int)
     {
-//        context?.let {context ->
-//            listModel.lists.value?.get(index)?.let {list ->
-//                val intent = CreateListActivity.newIntent(context, list.id)
-//                startActivity(intent)
-//            }
-//        }
+        context?.let {
+            listModel.items.value?.get(index)?.let { item ->
+                listModel.deleteItemAtIndex(item.id)
+            }
+        }
     }
 }

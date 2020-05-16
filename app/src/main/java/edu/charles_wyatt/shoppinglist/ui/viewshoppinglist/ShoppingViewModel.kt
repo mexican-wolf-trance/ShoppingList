@@ -7,6 +7,7 @@ import edu.charles_wyatt.shoppinglist.database.list.ShoppingList
 import edu.charles_wyatt.shoppinglist.database.ShoppingListDatabase
 import edu.charles_wyatt.shoppinglist.database.list.ShoppingListRepo
 import kotlinx.coroutines.runBlocking
+import java.util.*
 
 
 class ShoppingViewModel(application: Application) : AndroidViewModel(application)
@@ -32,6 +33,13 @@ class ShoppingViewModel(application: Application) : AndroidViewModel(application
             runBlocking {
                 listRepo.insert(this@ShoppingViewModel.list)
             }
+        }
+    }
+
+    fun delete(id: UUID)
+    {
+        runBlocking {
+            listRepo.delete(id = id)
         }
     }
 }
